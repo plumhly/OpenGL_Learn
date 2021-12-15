@@ -7,10 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38083A3727685E3700E4182C /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
+		38BB6EEB2761C5FE00BA851A /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; };
+		38BB6EEC2761C5FE00BA851A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6EE22761C5FE00BA851A /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		38083A3827685E3700E4182C /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				38083A3727685E3700E4182C /* libglfw.3.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38BB6ED42761C5B100BA851A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -25,6 +39,12 @@
 /* Begin PBXFileReference section */
 		38BB6ED62761C5B100BA851A /* OpenGL_Ex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Ex; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BB6ED92761C5B100BA851A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
+		38BB6EE22761C5FE00BA851A /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
+		38BB6EE92761C5FE00BA851A /* glfw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		38BB6EEA2761C5FE00BA851A /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		38BB6EEE2763159F00BA851A /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
+		38BB6EF02763159F00BA851A /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BB6EEB2761C5FE00BA851A /* libglfw.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,9 +78,55 @@
 		38BB6ED82761C5B100BA851A /* OpenGL_Ex */ = {
 			isa = PBXGroup;
 			children = (
+				38BB6EE22761C5FE00BA851A /* glad.c */,
+				38BB6EE32761C5FE00BA851A /* include */,
+				38BB6EE02761C5FE00BA851A /* lib */,
 				38BB6ED92761C5B100BA851A /* main.cpp */,
 			);
 			path = OpenGL_Ex;
+			sourceTree = "<group>";
+		};
+		38BB6EE02761C5FE00BA851A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		38BB6EE32761C5FE00BA851A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				38BB6EED2763159F00BA851A /* glad */,
+				38BB6EEF2763159F00BA851A /* KHR */,
+				38BB6EE82761C5FE00BA851A /* GLFW */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		38BB6EE82761C5FE00BA851A /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+				38BB6EE92761C5FE00BA851A /* glfw3.h */,
+				38BB6EEA2761C5FE00BA851A /* glfw3native.h */,
+			);
+			path = GLFW;
+			sourceTree = "<group>";
+		};
+		38BB6EED2763159F00BA851A /* glad */ = {
+			isa = PBXGroup;
+			children = (
+				38BB6EEE2763159F00BA851A /* glad.h */,
+			);
+			path = glad;
+			sourceTree = "<group>";
+		};
+		38BB6EEF2763159F00BA851A /* KHR */ = {
+			isa = PBXGroup;
+			children = (
+				38BB6EF02763159F00BA851A /* khrplatform.h */,
+			);
+			path = KHR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,6 +139,7 @@
 				38BB6ED22761C5B100BA851A /* Sources */,
 				38BB6ED32761C5B100BA851A /* Frameworks */,
 				38BB6ED42761C5B100BA851A /* CopyFiles */,
+				38083A3827685E3700E4182C /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -120,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38BB6EDA2761C5B100BA851A /* main.cpp in Sources */,
+				38BB6EEC2761C5FE00BA851A /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +312,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4J56RSJ5PS;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenGL_Ex/lib",
+				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -253,6 +328,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4J56RSJ5PS;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenGL_Ex/lib",
+				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
