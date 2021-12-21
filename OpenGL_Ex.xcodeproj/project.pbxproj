@@ -7,36 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38083A3727685E3700E4182C /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; };
+		387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
-		38BB6EEB2761C5FE00BA851A /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; };
 		38BB6EEC2761C5FE00BA851A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6EE22761C5FE00BA851A /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		38083A3827685E3700E4182C /* Embed Libraries */ = {
+		387BD140277171AF00743557 /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				38083A3727685E3700E4182C /* libglfw.3.dylib in Embed Libraries */,
+				387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		38BB6ED42761C5B100BA851A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		387BD13B2771714E00743557 /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = OpenGL_Ex/lib/libglfw.3.dylib; sourceTree = "<group>"; };
 		38BB6ED62761C5B100BA851A /* OpenGL_Ex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Ex; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BB6ED92761C5B100BA851A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
@@ -48,22 +40,31 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		38BB6ED32761C5B100BA851A /* Frameworks */ = {
+		387BD13D2771716900743557 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38BB6EEB2761C5FE00BA851A /* libglfw.3.dylib in Frameworks */,
+				387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		388FB9FF27709D6A006A7ED4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		38BB6ECD2761C5B100BA851A = {
 			isa = PBXGroup;
 			children = (
+				387BD13B2771714E00743557 /* libglfw.3.dylib */,
 				38BB6ED82761C5B100BA851A /* OpenGL_Ex */,
 				38BB6ED72761C5B100BA851A /* Products */,
+				388FB9FF27709D6A006A7ED4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,9 +138,8 @@
 			buildConfigurationList = 38BB6EDD2761C5B100BA851A /* Build configuration list for PBXNativeTarget "OpenGL_Ex" */;
 			buildPhases = (
 				38BB6ED22761C5B100BA851A /* Sources */,
-				38BB6ED32761C5B100BA851A /* Frameworks */,
-				38BB6ED42761C5B100BA851A /* CopyFiles */,
-				38083A3827685E3700E4182C /* Embed Libraries */,
+				387BD13D2771716900743557 /* Frameworks */,
+				387BD140277171AF00743557 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
