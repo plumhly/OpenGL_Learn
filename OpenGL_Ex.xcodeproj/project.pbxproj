@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3831FF312772CA6600947EDD /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3831FF2F2772CA6600947EDD /* Shader.cpp */; };
-		3831FF3F2773276200947EDD /* 3.3.shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3C2773274A00947EDD /* 3.3.shader.vs */; };
-		3831FF402773276200947EDD /* 3.3.shader.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3D2773274A00947EDD /* 3.3.shader.fs */; };
+		3831FF3F2773276200947EDD /* 3.3.shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3C2773274A00947EDD /* 3.3.shader.vs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3831FF402773276200947EDD /* 3.3.shader.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3D2773274A00947EDD /* 3.3.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; };
 		387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
@@ -19,8 +19,8 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		3831FF3E2773275500947EDD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
+			buildActionMask = 12;
+			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
 				3831FF3F2773276200947EDD /* 3.3.shader.vs in CopyFiles */,
