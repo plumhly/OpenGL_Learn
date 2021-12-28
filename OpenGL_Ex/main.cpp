@@ -22,6 +22,9 @@ void processInput(GLFWwindow *window);
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
 const char *vertexShaderSource = "#version 410 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     "layout (location = 1) in vec3 courColor;\n"
@@ -139,7 +142,7 @@ int main(int argc, const char * argv[]) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINE);
     
-//    stbi_set_flip_vertically_on_load(true);
+    stbi_set_flip_vertically_on_load(true);
     data = stbi_load("images/awesomeface.png", &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -158,10 +161,8 @@ int main(int argc, const char * argv[]) {
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
     
-    unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-    
-    
+//    unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+//    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -183,6 +184,23 @@ int main(int argc, const char * argv[]) {
         
         // draw
         ourShader.use();
+        
+        // model
+        glm::mat4 model(1.0f);
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        
+        // view
+        glm::mat4 view(1.0f);
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        unsigned int viewlLoc = glGetUniformLocation(ourShader.ID, "view");
+        glUniformMatrix4fv(viewlLoc, 1, GL_FALSE, glm::value_ptr(view));
+        
+        // projection
+        glm::mat4 proj(1.0f);
+        proj = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        ourShader.setMatrix4("projection", proj);
         
         glBindVertexArray(VAO);
 //        glDrawArrays(GL_TRIANGLES, 0, 3);
