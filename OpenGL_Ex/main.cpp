@@ -25,6 +25,10 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 const char *vertexShaderSource = "#version 410 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     "layout (location = 1) in vec3 courColor;\n"
@@ -241,8 +245,12 @@ int main(int argc, const char * argv[]) {
 //        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
         
         // view
-        glm::mat4 view(1.0f);
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        float radius = 10.0f;
+        float cameraX = sin(glfwGetTime()) * radius;
+        float cameraY = cos(glfwGetTime()) * radius;
+        
+        glm::mat4 view = glm::lookAt(glm::vec3(cameraX, 0.0f, cameraY), glm::vec3(0, 0, 0), glm::vec3(0.0f, 1.0f, 0.0f));
+//        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         unsigned int viewlLoc = glGetUniformLocation(ourShader.ID, "view");
         glUniformMatrix4fv(viewlLoc, 1, GL_FALSE, glm::value_ptr(view));
         
