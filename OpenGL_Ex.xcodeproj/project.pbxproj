@@ -491,6 +491,7 @@
 		38BB6EEA2761C5FE00BA851A /* glfw3native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
 		38BB6EEE2763159F00BA851A /* glad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glad.h; sourceTree = "<group>"; };
 		38BB6EF02763159F00BA851A /* khrplatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = khrplatform.h; sourceTree = "<group>"; };
+		38DDAE06277D8A4500996A51 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1027,6 +1028,7 @@
 				3831FF4427744D8C00947EDD /* stb_image.h */,
 				3831FF2F2772CA6600947EDD /* Shader.cpp */,
 				3831FF302772CA6600947EDD /* Shader.hpp */,
+				38DDAE06277D8A4500996A51 /* Camera.hpp */,
 			);
 			path = OpenGL_Ex;
 			sourceTree = "<group>";

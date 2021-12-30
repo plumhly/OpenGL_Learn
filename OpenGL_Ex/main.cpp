@@ -18,16 +18,29 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+#include "Camera.hpp"
+
 void processInput(GLFWwindow *window);
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
+void mouse_callback(GLFWwindow *window, double xpos, double ypos);
+void scroll_callback(GLFWwindow *window, double xpos, double ypos);
+
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+
+
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+float deltaTime = 0.0f;
+float lastTime = 0.0f;
+float lastX = 400, lastY = 300;
+bool isFirstTime = true;
 
 const char *vertexShaderSource = "#version 410 core\n"
     "layout (location = 0) in vec3 aPos;\n"
@@ -222,6 +235,9 @@ int main(int argc, const char * argv[]) {
     
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glEnable(GL_DEPTH_TEST);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
     while (!glfwWindowShouldClose(window)) {
         processInput(window);
         
@@ -245,18 +261,14 @@ int main(int argc, const char * argv[]) {
 //        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
         
         // view
-        float radius = 10.0f;
-        float cameraX = sin(glfwGetTime()) * radius;
-        float cameraY = cos(glfwGetTime()) * radius;
-        
-        glm::mat4 view = glm::lookAt(glm::vec3(cameraX, 0.0f, cameraY), glm::vec3(0, 0, 0), glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::mat4 view = camera.getViewMatrix();
 //        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         unsigned int viewlLoc = glGetUniformLocation(ourShader.ID, "view");
         glUniformMatrix4fv(viewlLoc, 1, GL_FALSE, glm::value_ptr(view));
         
         // projection
         glm::mat4 proj(1.0f);
-        proj = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        proj = glm::perspective(glm::radians(camera.zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         ourShader.setMatrix4("projection", proj);
         
         
@@ -284,9 +296,40 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+void mouse_callback(GLFWwindow *window, double xpos, double ypos) {
+    if (isFirstTime) {
+        lastX = xpos;
+        lastY = ypos;
+        isFirstTime = false;
+    }
+    
+    float xOffset = xpos - lastX;
+    float yOffset = lastY - ypos;
+    lastX = xpos;
+    lastY = ypos;
+    
+    camera.processMouseMovement(xOffset, yOffset);
+}
+
+void scroll_callback(GLFWwindow *window, double xpos, double ypos) {
+    camera.precessMouseScroll(ypos);
+}
+
 void processInput(GLFWwindow *window) {
+    float currentTime = glfwGetTime();
+    deltaTime = currentTime - lastTime;
+    lastTime = currentTime;
+    float cameraSpeed = 2.5f * deltaTime;
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
+    } else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+        camera.processKeyboard(FORWARD, deltaTime);
+    } else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+        camera.processKeyboard(BACKWARD, deltaTime);
+    } else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+        camera.processKeyboard(LEFT, deltaTime);
+    } else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+        camera.processKeyboard(RIGHT, deltaTime);
     }
 }
 
