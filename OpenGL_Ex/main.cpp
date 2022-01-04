@@ -153,11 +153,15 @@ int main(int argc, const char * argv[]) {
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
+        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
+        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
+        
         // draw
         objctShader.use();
         objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         objctShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
         objctShader.setVec3("lightPos", lightPos);
+        objctShader.setVec3("viewPos", camera.position);
         
         // view
         glm::mat4 view = camera.getViewMatrix();
