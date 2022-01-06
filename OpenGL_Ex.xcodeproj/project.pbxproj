@@ -12,6 +12,8 @@
 		3831FF402773276200947EDD /* light.shader.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3D2773274A00947EDD /* light.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3831FF4827744DFF00947EDD /* container.jpeg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF4627744DE800947EDD /* container.jpeg */; };
 		3831FF4A277479B500947EDD /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF492774764E00947EDD /* awesomeface.png */; };
+		383C0B38278704970050E88F /* container2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 383C0B372786F2E80050E88F /* container2.png */; };
+		383C0B3A27870CA40050E88F /* container2_specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 383C0B3927870C240050E88F /* container2_specular.png */; };
 		387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; };
 		387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
@@ -40,6 +42,8 @@
 			dstPath = images;
 			dstSubfolderSpec = 7;
 			files = (
+				383C0B3A27870CA40050E88F /* container2_specular.png in CopyFiles */,
+				383C0B38278704970050E88F /* container2.png in CopyFiles */,
 				3831FF4A277479B500947EDD /* awesomeface.png in CopyFiles */,
 				3831FF4827744DFF00947EDD /* container.jpeg in CopyFiles */,
 			);
@@ -486,6 +490,8 @@
 		3831FFFD2775AF0000947EDD /* vector_float4_precision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_float4_precision.hpp; sourceTree = "<group>"; };
 		3831FFFE2775AF0000947EDD /* vector_double2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector_double2.hpp; sourceTree = "<group>"; };
 		3831FFFF2775AF0000947EDD /* matrix_relational.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = matrix_relational.inl; sourceTree = "<group>"; };
+		383C0B372786F2E80050E88F /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
+		383C0B3927870C240050E88F /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		387BD13B2771714E00743557 /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = OpenGL_Ex/lib/libglfw.3.dylib; sourceTree = "<group>"; };
 		38BB6ED62761C5B100BA851A /* OpenGL_Ex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Ex; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BB6ED92761C5B100BA851A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -789,6 +795,8 @@
 			children = (
 				3831FF492774764E00947EDD /* awesomeface.png */,
 				3831FF4627744DE800947EDD /* container.jpeg */,
+				383C0B372786F2E80050E88F /* container2.png */,
+				383C0B3927870C240050E88F /* container2_specular.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
