@@ -156,12 +156,28 @@ int main(int argc, const char * argv[]) {
         lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
         lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
         
+        glm::vec3 lightColor;
+        lightColor.x = sin(glfwGetTime() * 2.0f);
+        lightColor.y = sin(glfwGetTime() * 0.7f);
+        lightColor.z = sin(glfwGetTime() * 1.3f);
+        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+        glm::vec3 ambientColor = lightColor * glm::vec3(0.2f);
+        
         // draw
         objctShader.use();
         objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        objctShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        objctShader.setVec3("lightPos", lightPos);
+        
         objctShader.setVec3("viewPos", camera.position);
+        objctShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        objctShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        objctShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        objctShader.setFloat("material.shininess", 32.0f);
+        
+        objctShader.setVec3("light.ambient", ambientColor);
+        objctShader.setVec3("light.diffuse", diffuseColor);
+        objctShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        objctShader.setVec3("light.position", lightPos);
+        
         
         // view
         glm::mat4 view = camera.getViewMatrix();
