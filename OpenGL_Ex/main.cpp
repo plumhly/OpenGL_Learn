@@ -71,7 +71,7 @@ int main(int argc, const char * argv[]) {
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
     
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);\
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glEnable(GL_DEPTH_TEST);
     
     Shader objctShader("shaders/obj.shader.vs", "shaders/obj.shader.fs");
@@ -122,6 +122,20 @@ int main(int argc, const char * argv[]) {
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
     };
     
+    // positions all containers
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+    
     unsigned int VBO, objVAO;
     glGenVertexArrays(1, &objVAO);
     glGenBuffers(1, &VBO);
@@ -162,29 +176,31 @@ int main(int argc, const char * argv[]) {
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
-        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
-        
-        glm::vec3 lightColor(1.0);
+//        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
+//        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
+//
+//        glm::vec3 lightColor(1.0);
 //        lightColor.x = sin(glfwGetTime() * 2.0f);
 //        lightColor.y = sin(glfwGetTime() * 0.7f);
 //        lightColor.z = sin(glfwGetTime() * 1.3f);
-        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-        glm::vec3 ambientColor = lightColor * glm::vec3(0.2f);
+//        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
+//        glm::vec3 ambientColor = lightColor * glm::vec3(0.2f);
         
         // draw
         objctShader.use();
-        objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+//        objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         
+        objctShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         objctShader.setVec3("viewPos", camera.position);
-        objctShader.setInt("material.diffuse", 0);
-        objctShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        
+//        objctShader.setInt("material.diffuse", 0);
+//        objctShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         objctShader.setFloat("material.shininess", 32.0f);
         
-        objctShader.setVec3("light.ambient", ambientColor);
-        objctShader.setVec3("light.diffuse", diffuseColor);
+        objctShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        objctShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         objctShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setVec3("light.position", lightPos);
+//        objctShader.setVec3("light.position", lightPos);
         
         
         // view
@@ -197,7 +213,7 @@ int main(int argc, const char * argv[]) {
         
         // model
         glm::mat4 model = glm::mat4(1.0);
-        model = glm::translate(model, glm::vec3(-1.0f, -1.0f, 1.0f));
+//        model = glm::translate(model, glm::vec3(-1.0f, -1.0f, 1.0f));
         objctShader.setMatrix4("model", model);
         
         glActiveTexture(GL_TEXTURE0);
@@ -208,20 +224,27 @@ int main(int argc, const char * argv[]) {
         
         // 渲染光照后的箱子
         glBindVertexArray(objVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for (unsigned int i = 0; i < 10; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            objctShader.setMatrix4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         
         
-        lightShader.use();
-        lightShader.setMatrix4("view", view);
-        lightShader.setMatrix4("projection", proj);
-        
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f));
-        lightShader.setMatrix4("model", model);
-        
-        glBindVertexArray(lightVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+//        lightShader.use();
+//        lightShader.setMatrix4("view", view);
+//        lightShader.setMatrix4("projection", proj);
+//
+//        model = glm::mat4(1.0f);
+//        model = glm::translate(model, lightPos);
+//        model = glm::scale(model, glm::vec3(0.2f));
+//        lightShader.setMatrix4("model", model);
+//
+//        glBindVertexArray(lightVAO);
+//        glDrawArrays(GL_TRIANGLES, 0, 36);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
