@@ -190,7 +190,7 @@ int main(int argc, const char * argv[]) {
         objctShader.use();
 //        objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         
-        objctShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+//        objctShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         objctShader.setVec3("viewPos", camera.position);
         
 //        objctShader.setInt("material.diffuse", 0);
@@ -200,7 +200,11 @@ int main(int argc, const char * argv[]) {
         objctShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
         objctShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         objctShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-//        objctShader.setVec3("light.position", lightPos);
+        
+        objctShader.setFloat("light.constant", 1.0f);
+        objctShader.setFloat("light.linear", 0.09f);
+        objctShader.setFloat("light.quadratic", 0.032f);
+        objctShader.setVec3("light.position", lightPos);
         
         
         // view
@@ -234,17 +238,17 @@ int main(int argc, const char * argv[]) {
         }
         
         
-//        lightShader.use();
-//        lightShader.setMatrix4("view", view);
-//        lightShader.setMatrix4("projection", proj);
-//
-//        model = glm::mat4(1.0f);
-//        model = glm::translate(model, lightPos);
-//        model = glm::scale(model, glm::vec3(0.2f));
-//        lightShader.setMatrix4("model", model);
-//
-//        glBindVertexArray(lightVAO);
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        lightShader.use();
+        lightShader.setMatrix4("view", view);
+        lightShader.setMatrix4("projection", proj);
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f));
+        lightShader.setMatrix4("model", model);
+
+        glBindVertexArray(lightVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
