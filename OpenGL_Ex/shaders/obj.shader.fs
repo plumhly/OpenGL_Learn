@@ -19,7 +19,10 @@ in vec2 texCoords;
 
 struct Light {
     vec3 position;
-    // vec3 direction;
+    vec3 direction;
+    float cutOff;
+    float outerCutOff;
+
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -38,8 +41,14 @@ void main() {
     vec3 norm = normalize(normal);
     vec3 lightDir = normalize(light.position - fragPos);
 
+    float theta = dot(lightDir, normalize(-light.direction));
+    float epsilon = light.cutOff - light.outerCutOff;
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+
     float diff = max(dot(norm, lightDir), 0.0);
     vec3 diffuse = (diff * vec3(texture(material.diffuse, texCoords))) * light.diffuse;
+    
+    diffuse *= intensity;
     diffuse *= attenuation;
 
     vec3 viewDir = normalize(viewPos - fragPos);
@@ -47,6 +56,7 @@ void main() {
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     vec3 specular = (spec * vec3(texture(material.specular, texCoords))) * light.specular;
     specular *= attenuation;
+    specular *= intensity;
 
     vec3 ambient = vec3(texture(material.diffuse, texCoords)) * light.ambient;
     ambient *= attenuation;

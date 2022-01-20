@@ -190,7 +190,11 @@ int main(int argc, const char * argv[]) {
         objctShader.use();
 //        objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         
-//        objctShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+        objctShader.setVec3("light.position", camera.position);
+        objctShader.setVec3("light.direction", camera.front);
+        objctShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+        objctShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
+        
         objctShader.setVec3("viewPos", camera.position);
         
 //        objctShader.setInt("material.diffuse", 0);
