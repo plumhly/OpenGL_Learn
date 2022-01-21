@@ -7,33 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382AA09B279AB35D00EDF4F7 /* assimp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EC48ED279AAF9300E23D80 /* assimp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3831FF312772CA6600947EDD /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3831FF2F2772CA6600947EDD /* Shader.cpp */; };
-		3831FF3F2773276200947EDD /* obj.shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3C2773274A00947EDD /* obj.shader.vs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		3831FF402773276200947EDD /* light.shader.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF3D2773274A00947EDD /* light.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3831FF3F2773276200947EDD /* obj.shader.vs in Copy Files */ = {isa = PBXBuildFile; fileRef = 3831FF3C2773274A00947EDD /* obj.shader.vs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3831FF402773276200947EDD /* light.shader.fs in Copy Files */ = {isa = PBXBuildFile; fileRef = 3831FF3D2773274A00947EDD /* light.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3831FF4827744DFF00947EDD /* container.jpeg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF4627744DE800947EDD /* container.jpeg */; };
 		3831FF4A277479B500947EDD /* awesomeface.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3831FF492774764E00947EDD /* awesomeface.png */; };
 		383C0B38278704970050E88F /* container2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 383C0B372786F2E80050E88F /* container2.png */; };
 		383C0B3A27870CA40050E88F /* container2_specular.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 383C0B3927870C240050E88F /* container2_specular.png */; };
-		387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; };
-		387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 387BD13B2771714E00743557 /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		389D74202799772E007F1027 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D741E2799772E007F1027 /* Mesh.cpp */; };
+		389D7427279A5399007F1027 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D7425279A5399007F1027 /* Model.cpp */; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
 		38BB6EEC2761C5FE00BA851A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6EE22761C5FE00BA851A /* glad.c */; };
-		38E2627A277DB9300038A5EB /* obj.shader.fs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38E26278277DB2290038A5EB /* obj.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		38E2627B277DB9300038A5EB /* light.shader.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38E26279277DB2290038A5EB /* light.shader.vs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		38E2627A277DB9300038A5EB /* obj.shader.fs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E26278277DB2290038A5EB /* obj.shader.fs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		38E2627B277DB9300038A5EB /* light.shader.vs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E26279277DB2290038A5EB /* light.shader.vs */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		38EC48EC279AAF8600E23D80 /* libglfw.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; };
+		38EC48F2279AB08F00E23D80 /* libglfw.3.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3831FF3E2773275500947EDD /* CopyFiles */ = {
+		3831FF3E2773275500947EDD /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
-				38E2627A277DB9300038A5EB /* obj.shader.fs in CopyFiles */,
-				38E2627B277DB9300038A5EB /* light.shader.vs in CopyFiles */,
-				3831FF3F2773276200947EDD /* obj.shader.vs in CopyFiles */,
-				3831FF402773276200947EDD /* light.shader.fs in CopyFiles */,
+				38E2627A277DB9300038A5EB /* obj.shader.fs in Copy Files */,
+				38E2627B277DB9300038A5EB /* light.shader.vs in Copy Files */,
+				3831FF3F2773276200947EDD /* obj.shader.vs in Copy Files */,
+				3831FF402773276200947EDD /* light.shader.fs in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3831FF4727744DF700947EDD /* CopyFiles */ = {
@@ -49,15 +53,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		387BD140277171AF00743557 /* Embed Libraries */ = {
+		38EC48F1279AB07E00E23D80 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				387BD13F277171AF00743557 /* libglfw.3.dylib in Embed Libraries */,
+				38EC48F2279AB08F00E23D80 /* libglfw.3.dylib in Embed Frameworks */,
 			);
-			name = "Embed Libraries";
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -492,7 +496,10 @@
 		3831FFFF2775AF0000947EDD /* matrix_relational.inl */ = {isa = PBXFileReference; lastKnownFileType = text; path = matrix_relational.inl; sourceTree = "<group>"; };
 		383C0B372786F2E80050E88F /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
 		383C0B3927870C240050E88F /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
-		387BD13B2771714E00743557 /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = OpenGL_Ex/lib/libglfw.3.dylib; sourceTree = "<group>"; };
+		389D741E2799772E007F1027 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		389D741F2799772E007F1027 /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		389D7425279A5399007F1027 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		389D7426279A5399007F1027 /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		38BB6ED62761C5B100BA851A /* OpenGL_Ex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGL_Ex; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BB6ED92761C5B100BA851A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libglfw.3.dylib; sourceTree = "<group>"; };
@@ -504,14 +511,16 @@
 		38DDAE06277D8A4500996A51 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		38E26278277DB2290038A5EB /* obj.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = obj.shader.fs; sourceTree = "<group>"; };
 		38E26279277DB2290038A5EB /* light.shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = light.shader.vs; sourceTree = "<group>"; };
+		38EC48ED279AAF9300E23D80 /* assimp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = assimp.framework; path = OpenGL_Ex/assimp.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		387BD13D2771716900743557 /* Frameworks */ = {
+		38EC48EB279AAF7200E23D80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				387BD13E277171A700743557 /* libglfw.3.dylib in Frameworks */,
+				38EC48EC279AAF8600E23D80 /* libglfw.3.dylib in Frameworks */,
+				382AA09B279AB35D00EDF4F7 /* assimp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1019,7 @@
 		388FB9FF27709D6A006A7ED4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38EC48ED279AAF9300E23D80 /* assimp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1017,7 +1027,6 @@
 		38BB6ECD2761C5B100BA851A = {
 			isa = PBXGroup;
 			children = (
-				387BD13B2771714E00743557 /* libglfw.3.dylib */,
 				38BB6ED82761C5B100BA851A /* OpenGL_Ex */,
 				38BB6ED72761C5B100BA851A /* Products */,
 				388FB9FF27709D6A006A7ED4 /* Frameworks */,
@@ -1045,6 +1054,10 @@
 				3831FF2F2772CA6600947EDD /* Shader.cpp */,
 				3831FF302772CA6600947EDD /* Shader.hpp */,
 				38DDAE06277D8A4500996A51 /* Camera.hpp */,
+				389D741E2799772E007F1027 /* Mesh.cpp */,
+				389D741F2799772E007F1027 /* Mesh.hpp */,
+				389D7425279A5399007F1027 /* Model.cpp */,
+				389D7426279A5399007F1027 /* Model.hpp */,
 			);
 			path = OpenGL_Ex;
 			sourceTree = "<group>";
@@ -1100,10 +1113,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38BB6EDD2761C5B100BA851A /* Build configuration list for PBXNativeTarget "OpenGL_Ex" */;
 			buildPhases = (
-				387BD13D2771716900743557 /* Frameworks */,
-				387BD140277171AF00743557 /* Embed Libraries */,
-				3831FF3E2773275500947EDD /* CopyFiles */,
+				3831FF3E2773275500947EDD /* Copy Files */,
 				3831FF4727744DF700947EDD /* CopyFiles */,
+				38EC48EB279AAF7200E23D80 /* Frameworks */,
+				38EC48F1279AB07E00E23D80 /* Embed Frameworks */,
 				38BB6ED22761C5B100BA851A /* Sources */,
 			);
 			buildRules = (
@@ -1154,6 +1167,8 @@
 			files = (
 				38BB6EDA2761C5B100BA851A /* main.cpp in Sources */,
 				3831FF312772CA6600947EDD /* Shader.cpp in Sources */,
+				389D7427279A5399007F1027 /* Model.cpp in Sources */,
+				389D74202799772E007F1027 /* Mesh.cpp in Sources */,
 				38BB6EEC2761C5FE00BA851A /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1278,6 +1293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4J56RSJ5PS;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1294,6 +1310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4J56RSJ5PS;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/OpenGL_Ex/include";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

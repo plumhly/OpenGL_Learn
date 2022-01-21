@@ -288,7 +288,6 @@ int main(int argc, const char * argv[]) {
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
         
-        
         lightShader.use();
         lightShader.setMatrix4("view", view);
         lightShader.setMatrix4("projection", proj);
