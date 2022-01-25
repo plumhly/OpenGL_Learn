@@ -76,7 +76,7 @@ int main(int argc, const char * argv[]) {
     glEnable(GL_DEPTH_TEST);
     
     Shader objctShader("shaders/model.shader.vs", "shaders/model.shader.fs");
-    Model modelData("nanosuit/nanosuit.mtl");
+    Model modelData("nanosuit/nanosuit.obj");
     
     while (!glfwWindowShouldClose(window)) {
         
@@ -175,7 +175,7 @@ int main(int argc, const char * argv[]) {
         // model
         glm::mat4 model = glm::mat4(1.0);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+        model = glm::scale(model, glm::vec3(0.2f, .2f, .2f));
         objctShader.setMatrix4("model", model);
         modelData.draw(objctShader);
         

@@ -52,8 +52,8 @@ void Mesh::draw(Shader shader) {
         } else if(name == "texture_specular") {
             number = to_string(specularNumber++);
         }
-        
-        shader.setFloat(("material" + name + number), i);
+
+        shader.setFloat((name + number), i);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
     
