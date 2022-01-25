@@ -10,7 +10,7 @@
 #include "Model.hpp"
 #include "stb_image.h"
 
-Model::Model(char *path) {
+Model::Model(const char *path) {
     loadModel(path);
 }
 
@@ -99,7 +99,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type,
         mat->GetTexture(type, i, &str);
         bool isSkip = false;
         for (unsigned int j = 0; j < loadedTextures.size(); j++) {
-            if (std::strcmp(textures[j].path.data, str.C_Str()) == 0) {
+            if (std::strcmp(textures[j].path.data(), str.C_Str()) == 0) {
                 textures.push_back(loadedTextures[j]);
                 isSkip = true;
                 break;
@@ -107,6 +107,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type,
         }
         if (!isSkip) {
             Texture texture;
+            texture.id = textureFromFile(str.C_Str(), this->directory);
             texture.type = typeName;
             texture.path = str.C_Str();
             textures.push_back(texture);
@@ -127,7 +128,7 @@ unsigned int Model::textureFromFile(const char *path, const string &directory, b
     int width, height, nrComponents;
     unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
     if (data) {
-        GLenum format;
+        GLenum format = GL_RED;
         if (nrComponents == 1) {
             format = GL_RED;
         } else if (nrComponents == 3) {
@@ -138,7 +139,18 @@ unsigned int Model::textureFromFile(const char *path, const string &directory, b
         
         glBindTexture(GL_TEXTURE_2D, textureID);
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    } else {
+        std::cout << "Texture failed to load at path: " << path << std::endl;
     }
+    stbi_image_free(data);
+    
+    return textureID;
 }
 
 void Model::draw(Shader shader) {

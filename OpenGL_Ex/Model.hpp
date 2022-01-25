@@ -22,7 +22,7 @@
 class Model {
     
 public:
-    Model(char *path);
+    Model(const char *path);
     
     void draw(Shader shader);
     
@@ -36,7 +36,7 @@ private:
     Mesh processMesh(aiMesh *mesh, const aiScene *scene);
     vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName);
     
-    unsigned int textureFromFile(const char *path, const string &directory, bool gamma);
+    unsigned int textureFromFile(const char *path, const string &directory, bool gamma = false);
 };
 
 #endif /* Model_hpp */
