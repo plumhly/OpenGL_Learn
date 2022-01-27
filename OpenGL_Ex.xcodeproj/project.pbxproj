@@ -50,6 +50,7 @@
 		38E4BC1927A147C400DA69AF /* metal.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC1627A147B300DA69AF /* metal.png */; };
 		38E4BC1C27A1651400DA69AF /* depth_test.shader.fs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC1A27A164C200DA69AF /* depth_test.shader.fs */; };
 		38E4BC1D27A1651400DA69AF /* depth_test.shader.vs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC1B27A164C200DA69AF /* depth_test.shader.vs */; };
+		38E4BC1F27A2786B00DA69AF /* stencil_test.shader.fs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC1E27A2785E00DA69AF /* stencil_test.shader.fs */; };
 		38EC48F2279AB08F00E23D80 /* libglfw.3.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38BB6EE12761C5FE00BA851A /* libglfw.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				38E4BC1F27A2786B00DA69AF /* stencil_test.shader.fs in Copy Files */,
 				38E4BC1C27A1651400DA69AF /* depth_test.shader.fs in Copy Files */,
 				38E4BC1D27A1651400DA69AF /* depth_test.shader.vs in Copy Files */,
 				38E4BBA8279FA11700DA69AF /* model.shader.fs in Copy Files */,
@@ -695,6 +697,7 @@
 		38E4BC1727A147B300DA69AF /* marble.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = marble.jpeg; sourceTree = "<group>"; };
 		38E4BC1A27A164C200DA69AF /* depth_test.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = depth_test.shader.fs; sourceTree = "<group>"; };
 		38E4BC1B27A164C200DA69AF /* depth_test.shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = depth_test.shader.vs; sourceTree = "<group>"; };
+		38E4BC1E27A2785E00DA69AF /* stencil_test.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = stencil_test.shader.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -974,6 +977,7 @@
 		3831FF3B2773274A00947EDD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				38E4BC1E27A2785E00DA69AF /* stencil_test.shader.fs */,
 				38E4BC1A27A164C200DA69AF /* depth_test.shader.fs */,
 				38E4BC1B27A164C200DA69AF /* depth_test.shader.vs */,
 				38E4BBA6279FA10E00DA69AF /* model.shader.fs */,

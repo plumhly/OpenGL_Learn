@@ -73,9 +73,15 @@ int main(int argc, const char * argv[]) {
     glfwSetScrollCallback(window, scroll_callback);
     
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_STENCIL_TEST);
+    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
     
     Shader objctShader("shaders/depth_test.shader.vs", "shaders/depth_test.shader.fs");
+    Shader colorShader("shaders/depth_test.shader.vs", "shaders/stencil_test.shader.fs");
 //    Model modelData("nanosuit/nanosuit.obj");
     
     float cubeVertices[] = {
@@ -175,82 +181,19 @@ int main(int argc, const char * argv[]) {
         
         // render commands
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
-//        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
-//        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
-//
-//        glm::vec3 lightColor(1.0);
-//        lightColor.x = sin(glfwGetTime() * 2.0f);
-//        lightColor.y = sin(glfwGetTime() * 0.7f);
-//        lightColor.z = sin(glfwGetTime() * 1.3f);
-//        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
-//        glm::vec3 ambientColor = lightColor * glm::vec3(0.2f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         
         // draw
         objctShader.use();
-//        objctShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        /*
-        objctShader.setVec3("light.position", camera.position);
-        objctShader.setVec3("light.direction", camera.front);
-        objctShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
-        objctShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
         
-        objctShader.setVec3("viewPos", camera.position);
+        glStencilMask(0x00);
         
-//        objctShader.setInt("material.diffuse", 0);
-//        objctShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
-        objctShader.setFloat("material.shininess", 32.0f);
+        glBindVertexArray(planneVAO);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, metalTextureID);
+        objctShader.setMatrix4("model", glm::mat4(1.0f));
+        glDrawArrays(GL_TRIANGLES, 0, 6);
         
-        // directional light
-        objctShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-        objctShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-        objctShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-        objctShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-        // point light 1
-        objctShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-        objctShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-        objctShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-        objctShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setFloat("pointLights[0].constant", 1.0f);
-        objctShader.setFloat("pointLights[0].linear", 0.09f);
-        objctShader.setFloat("pointLights[0].quadratic", 0.032f);
-        // point light 2
-        objctShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-        objctShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-        objctShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-        objctShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setFloat("pointLights[1].constant", 1.0f);
-        objctShader.setFloat("pointLights[1].linear", 0.09f);
-        objctShader.setFloat("pointLights[1].quadratic", 0.032f);
-        // point light 3
-        objctShader.setVec3("pointLights[2].position", pointLightPositions[2]);
-        objctShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
-        objctShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
-        objctShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setFloat("pointLights[2].constant", 1.0f);
-        objctShader.setFloat("pointLights[2].linear", 0.09f);
-        objctShader.setFloat("pointLights[2].quadratic", 0.032f);
-        // point light 4
-        objctShader.setVec3("pointLights[3].position", pointLightPositions[3]);
-        objctShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
-        objctShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
-        objctShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setFloat("pointLights[3].constant", 1.0f);
-        objctShader.setFloat("pointLights[3].linear", 0.09f);
-        objctShader.setFloat("pointLights[3].quadratic", 0.032f);
-        // spotLight
-        objctShader.setVec3("spotLight.position", camera.position);
-        objctShader.setVec3("spotLight.direction", camera.front);
-        objctShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-        objctShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-        objctShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-        objctShader.setFloat("spotLight.constant", 1.0f);
-        objctShader.setFloat("spotLight.linear", 0.09f);
-        objctShader.setFloat("spotLight.quadratic", 0.032f);
-        objctShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-        objctShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
-        */
         // view
         glm::mat4 view = camera.getViewMatrix();
         objctShader.setMatrix4("view", view);
@@ -264,6 +207,9 @@ int main(int argc, const char * argv[]) {
         model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
         objctShader.setMatrix4("model", model);
         
+        glStencilMask(0xFF);
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        
         glBindVertexArray(cubeVAO);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, marbleTextureID);
@@ -274,55 +220,38 @@ int main(int argc, const char * argv[]) {
         objctShader.setMatrix4("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         
-        glBindVertexArray(planneVAO);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, metalTextureID);
-        objctShader.setMatrix4("model", glm::mat4(1.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        // 绘制一个大一些箱子
+        // 1. 禁止更新stencil
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        
+        colorShader.use();
+        colorShader.setMatrix4("view", view);
+        colorShader.setMatrix4("projection", proj);
+        float scale = 1.1f;
+        model = glm::mat4(1.0);
+        model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
+        model = glm::scale(model, glm::vec3(scale));
+        colorShader.setMatrix4("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(scale));
+        colorShader.setMatrix4("model", model);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
         glBindVertexArray(0);
+        glStencilMask(0xFF);
+        glEnable(GL_STENCIL_TEST);
+        glStencilFunc(GL_ALWAYS, 0, 0xFF);
 //        modelData.draw(objctShader);
-        
-        /*
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, diffuseTexture);
-        
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, specularTexure);
-        
-        // 渲染光照后的箱子
-        glBindVertexArray(objVAO);
-        for (unsigned int i = 0; i < 10; i++) {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            objctShader.setMatrix4("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-        
-        lightShader.use();
-        lightShader.setMatrix4("view", view);
-        lightShader.setMatrix4("projection", proj);
-        
-        glBindVertexArray(lightVAO);
-        for (unsigned int i = 0; i < 4; i++) {
-            model = glm::mat4(1.0f);
-            model = glm::translate(model, pointLightPositions[i]);
-            model = glm::scale(model, glm::vec3(0.2f));
-            lightShader.setMatrix4("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-         */
+
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    
-//    glDeleteVertexArrays(1, &objVAO);
-//    glDeleteVertexArrays(1, &lightVAO);
-//    glDeleteBuffers(1, &VBO);
-//    glDeleteTextures(1, &diffuseTexture);
-//    glDeleteTextures(1, &specularTexure);
     
     glfwTerminate();
     return 0;
@@ -348,9 +277,6 @@ void scroll_callback(GLFWwindow *window, double xpos, double ypos) {
 }
 
 void processInput(GLFWwindow *window) {
-    float currentTime = glfwGetTime();
-    deltaTime = currentTime - lastTime;
-    lastTime = currentTime;
     float cameraSpeed = 2.5f * deltaTime;
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
