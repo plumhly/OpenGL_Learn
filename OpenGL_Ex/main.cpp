@@ -202,8 +202,17 @@ int main(int argc, const char * argv[]) {
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
     
-    unsigned int grassTexureID = loadTexture("images/grass.png");
+    unsigned int grassTexureID = loadTexture("images/blending_transparent_window.png");
     
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    
+    std::map<float, glm::vec3> sorted;
+    for (unsigned int i = 0; i < vegetation.size(); i++) {
+        float distance = glm::length(camera.position - vegetation[i]);
+        sorted[distance] = vegetation[i];
+    }
     
     while (!glfwWindowShouldClose(window)) {
         
@@ -252,9 +261,9 @@ int main(int argc, const char * argv[]) {
         
         glBindVertexArray(grassVAO);
         glBindTexture(GL_TEXTURE_2D, grassTexureID);
-        for (unsigned int i = 0; i < vegetation.size(); i++) {
+        for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); it++) {
             model = glm::mat4(1.0f);
-            model = glm::translate(model, vegetation[i]);
+            model = glm::translate(model, it->second);
             objctShader.setMatrix4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }
