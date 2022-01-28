@@ -14,6 +14,7 @@
 		3831FF4A277479B500947EDD /* awesomeface.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 3831FF492774764E00947EDD /* awesomeface.png */; };
 		383C0B38278704970050E88F /* container2.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 383C0B372786F2E80050E88F /* container2.png */; };
 		383C0B3A27870CA40050E88F /* container2_specular.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 383C0B3927870C240050E88F /* container2_specular.png */; };
+		38782A3B27A38BD700CFE8E3 /* grass.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC2027A2B8D500DA69AF /* grass.png */; };
 		389D74202799772E007F1027 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D741E2799772E007F1027 /* Mesh.cpp */; };
 		389D7427279A5399007F1027 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D7425279A5399007F1027 /* Model.cpp */; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
@@ -80,6 +81,7 @@
 			dstPath = images;
 			dstSubfolderSpec = 7;
 			files = (
+				38782A3B27A38BD700CFE8E3 /* grass.png in Copy Files */,
 				38E4BC1827A147C400DA69AF /* marble.jpeg in Copy Files */,
 				38E4BC1927A147C400DA69AF /* metal.png in Copy Files */,
 				383C0B3A27870CA40050E88F /* container2_specular.png in Copy Files */,
@@ -698,6 +700,7 @@
 		38E4BC1A27A164C200DA69AF /* depth_test.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = depth_test.shader.fs; sourceTree = "<group>"; };
 		38E4BC1B27A164C200DA69AF /* depth_test.shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = depth_test.shader.vs; sourceTree = "<group>"; };
 		38E4BC1E27A2785E00DA69AF /* stencil_test.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = stencil_test.shader.fs; sourceTree = "<group>"; };
+		38E4BC2027A2B8D500DA69AF /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -999,6 +1002,7 @@
 				3831FF4627744DE800947EDD /* container.jpeg */,
 				383C0B372786F2E80050E88F /* container2.png */,
 				383C0B3927870C240050E88F /* container2_specular.png */,
+				38E4BC2027A2B8D500DA69AF /* grass.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
