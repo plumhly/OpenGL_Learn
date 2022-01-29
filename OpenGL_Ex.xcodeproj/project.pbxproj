@@ -16,6 +16,8 @@
 		383C0B3A27870CA40050E88F /* container2_specular.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 383C0B3927870C240050E88F /* container2_specular.png */; };
 		38782A3B27A38BD700CFE8E3 /* grass.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 38E4BC2027A2B8D500DA69AF /* grass.png */; };
 		38782A3D27A3C9FF00CFE8E3 /* blending_transparent_window.png in Copy Files */ = {isa = PBXBuildFile; fileRef = 38782A3C27A3C9ED00CFE8E3 /* blending_transparent_window.png */; };
+		38782A4027A5192700CFE8E3 /* frame_buffer.shader.fs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38782A3F27A5191D00CFE8E3 /* frame_buffer.shader.fs */; };
+		38782A4127A5192700CFE8E3 /* frame_buffer.shader.vs in Copy Files */ = {isa = PBXBuildFile; fileRef = 38782A3E27A5191D00CFE8E3 /* frame_buffer.shader.vs */; };
 		389D74202799772E007F1027 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D741E2799772E007F1027 /* Mesh.cpp */; };
 		389D7427279A5399007F1027 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 389D7425279A5399007F1027 /* Model.cpp */; };
 		38BB6EDA2761C5B100BA851A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38BB6ED92761C5B100BA851A /* main.cpp */; };
@@ -63,6 +65,8 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 7;
 			files = (
+				38782A4027A5192700CFE8E3 /* frame_buffer.shader.fs in Copy Files */,
+				38782A4127A5192700CFE8E3 /* frame_buffer.shader.vs in Copy Files */,
 				38E4BC1F27A2786B00DA69AF /* stencil_test.shader.fs in Copy Files */,
 				38E4BC1C27A1651400DA69AF /* depth_test.shader.fs in Copy Files */,
 				38E4BC1D27A1651400DA69AF /* depth_test.shader.vs in Copy Files */,
@@ -569,6 +573,8 @@
 		383C0B372786F2E80050E88F /* container2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2.png; sourceTree = "<group>"; };
 		383C0B3927870C240050E88F /* container2_specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container2_specular.png; sourceTree = "<group>"; };
 		38782A3C27A3C9ED00CFE8E3 /* blending_transparent_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blending_transparent_window.png; sourceTree = "<group>"; };
+		38782A3E27A5191D00CFE8E3 /* frame_buffer.shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = frame_buffer.shader.vs; sourceTree = "<group>"; };
+		38782A3F27A5191D00CFE8E3 /* frame_buffer.shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = frame_buffer.shader.fs; sourceTree = "<group>"; };
 		389D741E2799772E007F1027 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		389D741F2799772E007F1027 /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		389D7425279A5399007F1027 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
@@ -983,6 +989,8 @@
 		3831FF3B2773274A00947EDD /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				38782A3F27A5191D00CFE8E3 /* frame_buffer.shader.fs */,
+				38782A3E27A5191D00CFE8E3 /* frame_buffer.shader.vs */,
 				38E4BC1E27A2785E00DA69AF /* stencil_test.shader.fs */,
 				38E4BC1A27A164C200DA69AF /* depth_test.shader.fs */,
 				38E4BC1B27A164C200DA69AF /* depth_test.shader.vs */,
